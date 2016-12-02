@@ -47,6 +47,13 @@ echo tidying up font files
 # change .ttf.fix -> .ttf
 python ../build/cleanup.py
 
+fontbakery-fix-vertical-metrics.py -ah=982 -dh=-284 -at=750 -dt=-250 -lt=266 -lh=266 -aw=1062 -dw=378 $FONTS
+python ../build/cleanup.py
+
+FONTS=$(ls *.ttf)
+fontbakery-fix-fsselection.py --autofix --usetypometrics $FONTS
+python ../build/cleanup.py
+
 FONTS=$(ls *.ttf)
 echo autohinting fonts
 for font in $FONTS
